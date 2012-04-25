@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title></title>
+<script type="text/javascript" src="js/modalbox.js" ></script>
+<link media="screen" type="text/css" href="css/modalbox.css" rel="stylesheet" />
+</head>
+<body>
+	This is the main
+	<a href="#">this will open dialog box and covered the back screen</a>
+
+	<input id="Button1" type="button" value="Click here to be naughty"
+		onclick="showModal('modalBox')" />
+
+	<div>
+		<div id="overlay" class="overlay"></div>
+		
+		<div id="modalBox" 
+			 class="modalBox"
+			 style="width:500px; margin-left:-250px; height:200px; margin-top:-100px;">
+			 
+			 <div style="background-color: navy; color: white; height: 25px; vertical-align: middle;">
+			 	This is title
+			 </div>
+			 
+			 this is modal box
+			 
+			 <span class="button_panel button_panel_left">
+				<span class="button">&lt;Back</span>
+				<span class="button" id="cancelButton">Cancel</span>
+			</span>
+			<span class="button_panel button_panel_right">
+				<span class="button">OK</span>
+				<span class="button">Next&gt;</span>
+			</span>
+			
+		</div>
+			 
+	</div>
+	
+	<script type="text/javascript">
+		var cancelButton = document.getElementById("cancelButton");
+		cancelButton.onclick = function(){
+			hideModal('modalBox');
+		};
+	</script>
+</body>
+</html>
