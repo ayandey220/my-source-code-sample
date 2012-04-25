@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.custom.i18n.resources" value="language" />
+	<constant name="struts.configuration.xml.reload" value="true"></constant>
+	
+	<package name="pkg_main" extends="struts-default" namespace="/cacheJsp">
+		
+		<interceptors>
+			<interceptor name="cacheInterceptor" class="edu.learn.struts2.http.cache.headers.CachingHeaderInterceptor" />
+			
+			<!-- Interceptor to check web running over SSL -->
+			<interceptor name="sslInterceptor" class="edu.learn.struts2.ssl.require.SSLRequireToRunWeb" />
+			
+			<interceptor-stack name="defaultCacheAndSSLInterceptorStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="sslInterceptor" />
+				<interceptor-ref name="cacheInterceptor" />
+			</interceptor-stack>			
+		</interceptors>
+		
+		<default-interceptor-ref name="defaultCacheAndSSLInterceptorStack" />
+		
+		<!-- Global result -->
+		<global-results>
+			<result name="raw" type="stream">
+				<param name="inputName">inputStream</param>
+    			<param name="contentType">${contentType}</param>
+    			<param name="contentDisposition">${contentDisposition}</param>
+			</result>
+			
+			<result name="sslRequired">/cacheJsp/ssl.jsp</result>
+		</global-results>
+		
+		<action name="checkCache" class="edu.learn.struts2.http.cache.headers.CheckCacheHttpHeaders" method="checkCache">
+			<result name="success">cache.jsp</result>
+		</action>
+		
+	</package>	
+</struts>

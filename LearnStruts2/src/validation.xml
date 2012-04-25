@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="pkg_validate_msgresource" extends="pkg_main" namespace="/statement">
+		
+		<action name="statement" class="edu.learn.struts2.validation.ValidationDemo">
+			<result name="success">statement.jsp</result>
+		</action>
+		
+		<action name="getStatement" class="edu.learn.struts2.validation.ValidationDemo">
+			<result name="success">statement.jsp</result>
+			<result name="input">statement.jsp</result>
+		</action>
+						
+	</package>
+</struts>
