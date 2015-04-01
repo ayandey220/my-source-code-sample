@@ -1,0 +1,1 @@
+This project containing the source code samples about struts, hibernate, spring, apache poi, jexcel
